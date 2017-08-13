@@ -76,6 +76,16 @@ unix_socket_connect(mediaserver, drmserver, drmserver)
 unix_socket_connect(mediaserver, bluetooth, bluetooth)
 
 add_service(mediaserver, mediaserver_service)
+
+# Connect to tee service.
+allow mediaserver tee:unix_stream_socket connectto;
+
+ifelse(target_has_legacy_camera_hal1, `true',
+  allow mediaserver mediaserver_service:service_manager { add find };
+  neverallow { domain -mediaserver -cameraserver } mediaserver_service:service_manager add;
+,
+  add_service(mediaserver, mediaserver_service)
+)
 allow mediaserver activity_service:service_manager find;
 allow mediaserver appops_service:service_manager find;
 allow mediaserver audioserver_service:service_manager find;

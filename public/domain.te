@@ -356,6 +356,7 @@ neverallow {
     -dumpstate
     -shell
     userdebug_or_eng(`-su')
+    -system_server
     -webview_zygote
     -zygote
 } {

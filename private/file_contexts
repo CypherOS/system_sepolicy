@@ -117,6 +117,7 @@
 /dev/snd(/.*)?		u:object_r:audio_device:s0
 /dev/snd/audio_timer_device	u:object_r:audio_timer_device:s0
 /dev/snd/audio_seq_device	u:object_r:audio_seq_device:s0
+/dev/socket             u:object_r:sockets:s0
 /dev/socket(/.*)?	u:object_r:socket_device:s0
 /dev/socket/adbd	u:object_r:adbd_socket:s0
 /dev/socket/cryptd	u:object_r:vold_socket:s0

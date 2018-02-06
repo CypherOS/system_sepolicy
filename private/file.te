@@ -5,3 +5,7 @@ typealias app_data_file alias download_file;
 
 # /proc/config.gz
 type config_gz, fs_type;
+
+# Declare sockets type
+type sockets, dev_type;
+

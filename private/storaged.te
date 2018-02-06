@@ -4,6 +4,9 @@ type storaged_exec, exec_type, file_type;
 
 init_daemon_domain(storaged)
 
+# Search access for external sd
+allow storaged sockets:dir { search };
+
 # Read access to pseudo filesystems
 r_dir_file(storaged, sysfs_type)
 r_dir_file(storaged, proc_net)

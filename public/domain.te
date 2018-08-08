@@ -1016,7 +1016,6 @@ full_treble_only(`
     # Do not allow system components to execute files from vendor
     # except for the ones whitelisted here.
     neverallow {
-      coredomain
       -init
       -shell
       -system_executes_vendor_violators
@@ -1030,7 +1029,6 @@ full_treble_only(`
 
 full_treble_only(`
     neverallow {
-      coredomain
       -shell
       -system_executes_vendor_violators
     } vendor_file_type:file execute_no_trans;
@@ -1328,11 +1326,9 @@ neverallow * same_process_hwservice:hwservice_manager add;
 # TODO(b/71553434): Remove exceptions here.
 full_treble_only(`
   neverallow {
-    coredomain
     -appdomain
     -bootanim
     -crash_dump
-    -init
     -kernel
     -perfprofd
     -ueventd

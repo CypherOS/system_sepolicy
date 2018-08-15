@@ -16,7 +16,13 @@ allow system_server zygote_tmpfs:file read;
 
 # For art.
 allow system_server dalvikcache_data_file:dir r_dir_perms;
-allow system_server dalvikcache_data_file:file r_file_perms;
+
+# Allows /data access for system_server when dexpreopt is disabled
+without_dexpreopt(`allow system_server dalvikcache_data_file:file { r_file_perms execute };')
+userdebug_or_eng(`
+  # Report dalvikcache_data_file:file execute violations.
+  without_dexpreopt(`auditallow system_server dalvikcache_data_file:file execute;')
+')
 
 # When running system server under --invoke-with, we'll try to load the boot image under the
 # system server domain, following links to the system partition.
@@ -838,7 +844,7 @@ neverallow system_server dex2oat_exec:file no_x_file_perms;
 
 # system_server should never execute or load executable shared libraries
 # in /data
-neverallow system_server data_file_type:file no_x_file_perms;
+with_dexpreopt(`neverallow system_server data_file_type:file no_x_file_perms;')
 
 # The only block device system_server should be accessing is
 # the frp_block_device. This helps avoid a system_server to root

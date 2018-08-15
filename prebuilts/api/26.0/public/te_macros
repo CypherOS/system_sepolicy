@@ -485,6 +485,12 @@ allow $1 tombstone_data_file:file append;
 define(`with_dexpreopt', ifelse(target_with_dexpreopt, `true', $1))
 
 #####################################
+# WITH_DEXPREOPT disabled in builds
+# SELinux rules which apply only when not pre-opting.
+#
+define(`without_dexpreopt', ifelse(target_with_dexpreopt, `false', $1))
+
+#####################################
 # write_logd(domain)
 # Ability to write to android log
 # daemon via sockets

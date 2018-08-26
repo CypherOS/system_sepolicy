@@ -433,6 +433,7 @@ neverallow {
     -dumpstate
     -shell
     userdebug_or_eng(`-su')
+    without_dexpreopt(`-system_server')
     -webview_zygote
     -zygote
     userdebug_or_eng(`-mediaextractor')

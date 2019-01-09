@@ -50,6 +50,7 @@ neverallow {
   halserverdomain
   -hal_dumpstate_server
   -hal_telephony_server
+  -hal_fingerprint_server
 } { file_type fs_type }:file execute_no_trans;
 # Do not allow a process other than init to transition into a HAL domain.
 neverallow { domain -init } halserverdomain:process transition;
